@@ -1,11 +1,11 @@
 const { Router } = require('express');
-const router = Router();
+const dulceRouter = Router();
 var controllerDulce = require('../controllers/controllerDulce');
 
-router.get('/todos', controllerDulce.listarDulces);
-router.get('/:id', controllerDulce.dulcesporID);
-router.post('/nuevo', controllerDulce.guardarDulces);
-router.put('/editar/:id', controllerDulce.editarDulces);
-router.delete('/eliminar/:id', controllerDulce.eliminarDulce);
+dulceRouter.get('/todos', controllerDulce.listarDulces);
+dulceRouter.get('/:id', controllerDulce.dulcesporID);
+dulceRouter.post('/nuevo', controllerDulce.guardarDulces);
+dulceRouter.put('/editar/:id', controllerDulce.editarDulces);
+dulceRouter.delete('/eliminar/:id', controllerDulce.eliminarDulce);
 
-module.exports = router;
+module.exports = dulceRouter;
