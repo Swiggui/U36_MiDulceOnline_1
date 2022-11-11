@@ -1,6 +1,7 @@
 const Dulce = require("../models/Dulces");
 
-const dulceGuardar = async (req, res) => {
+//Guardar dulce
+const guardarDulces = async (req, res) => {
     try {
         const dulce = new Dulce(req.body);
         await dulce.save();
@@ -10,6 +11,17 @@ const dulceGuardar = async (req, res) => {
     }
 }
 
+//Leer dulces
+const listarDulces = async (req, res) => {
+    try {
+        const listaDulces = await Dulce.find();
+        res.status(200).send(listaDulces);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
-    dulceGuardar
+    guardarDulces,
+    listarDulces
 }
