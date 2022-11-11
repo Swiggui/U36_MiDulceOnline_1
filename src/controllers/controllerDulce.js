@@ -32,8 +32,21 @@ const dulcesporID = async (req, res) => {
     }
 }
 
+//Actualizar productos
+const editarDulces = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const dulce = req.body;
+        await Dulce.findByIdAndUpdate(id, dulce);
+        res.send("Dulce editado correctamente");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     guardarDulces,
     listarDulces,
-    dulcesporID
+    dulcesporID,
+    editarDulces
 }
