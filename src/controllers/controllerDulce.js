@@ -32,6 +32,17 @@ const dulcesporID = async (req, res) => {
     }
 }
 
+//Eliminar dulce
+const eliminarDulce = async (req, res) => {
+    try {
+        const id = req.params.id;
+        await Dulce.findByIdAndDelete(id);
+        res.send("Dulce eliminado correctamente");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 //Actualizar productos
 const editarDulces = async (req, res) => {
     try {
@@ -48,5 +59,6 @@ module.exports = {
     guardarDulces,
     listarDulces,
     dulcesporID,
-    editarDulces
+    editarDulces,
+    eliminarDulce
 }
