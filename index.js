@@ -1,14 +1,14 @@
 const app = require("./app");
 var port = 4000;
 var mongoose = require('./database');
-var router = require('./src/routers/Dulces.routes');
+var dulceRouter = require('./src/routers/Dulces.routes');
 
 app.listen(port, () =>{
     console.log("Servidor activo en el puerto: "+port);
 });
 
-app.use(router);
+app.use("/dulce", dulceRouter);
 
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("App Working");
 }) ;
