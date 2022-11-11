@@ -11,7 +11,7 @@ const DulceSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        presentación: {
+        presentacion: {
             type: String,
             required: true
         },
