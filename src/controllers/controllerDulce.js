@@ -21,7 +21,19 @@ const listarDulces = async (req, res) => {
     }
 }
 
+//Consultar por ID
+const dulcesporID = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const dulce = await Dulce.findById(id);
+        res.status(200).send(dulce);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     guardarDulces,
-    listarDulces
+    listarDulces,
+    dulcesporID
 }
