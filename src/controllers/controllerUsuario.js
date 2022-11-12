@@ -1,5 +1,6 @@
 const Usuario = require('../models/Usuarios');
 const jwt = require('jsonwebtoken');
+const { token } = require('morgan');
 
 const crearUsuario = async (req, res) => {
     
@@ -14,6 +15,24 @@ const crearUsuario = async (req, res) => {
             await usuario.save();
             return res.status(200).json({ aviso: "El usuario ha sido creado correctamente" });
         }
+
+        const payload = {
+            usuario: {id: usuario.id}
+        };
+
+        jwt.sign(
+            payload,
+            process.env.secret,
+            {
+                expiresIn: 3600,
+            },
+            (error, token) => {
+                if(error) throw error;
+
+                res.json({ token });
+            }
+        );
+
     } catch (error) {
         console.log(error);
     }
@@ -35,9 +54,25 @@ const loguearUsuario = async (req, res) => {
         } else {
             return res.status(400).json({aviso: "Acceso Denegado"});
         }
+
+        const payload = {
+            usuario: {id: usuario.id}
+        };
+        jwt.sign(
+            payload,
+            process.env.secret,
+            {
+                expiresIn: 3600,
+            },
+            (error, token) => {
+                if(error) throw error;
+                res.json({ token });
+            }
+        );
     } catch (error) {
         console.log(error);
     }
+
 }
 
 module.exports = {
