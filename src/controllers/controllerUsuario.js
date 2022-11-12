@@ -19,6 +19,28 @@ const crearUsuario = async (req, res) => {
     }
 }
 
+const loguearUsuario = async (req, res) => {
+    try {
+        const { apodo, contrasena } = req.body;
+        const usuario = await Usuario.findOne({apodo});
+        if(usuario){
+            if(usuario.contrasena === contrasena){
+                return res.status(200).json({
+                    aviso: "Logueado",
+                    usuario: usuario.id
+                });
+            } else {
+                return res.status(400).json({aviso: "Acceso Denegado."});
+            }
+        } else {
+            return res.status(400).json({aviso: "Acceso Denegado"});
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
-    crearUsuario
+    crearUsuario,
+    loguearUsuario
 }
