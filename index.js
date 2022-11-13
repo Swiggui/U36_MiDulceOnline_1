@@ -5,6 +5,8 @@ var dulceRouter = require('./src/routers/Dulces.routes');
 var usuarioRouter = require('./src/routers/Usuarios.routes');
 var cors = require('cors');
 
+app.use(cors());
+
 app.listen(port, () =>{
     console.log("Servidor activo en el puerto: "+port);
 });
