@@ -8,7 +8,7 @@ const guardarDulces = async (req, res) => {
         let candie = await Dulce.findOne({referencia});
 
         if(candie){
-            return res.status(400).json({ mensaje: "Dulce Existente" });
+            return res.status(400).json({ aviso: "Dulce Existente" });
         } else {
             const dulce = new Dulce(req.body);
             await dulce.save();
