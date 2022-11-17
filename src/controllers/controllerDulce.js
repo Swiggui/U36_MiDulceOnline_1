@@ -16,7 +16,7 @@ const guardarDulces = async (req, res) => {
         }
 
         const payload = {
-            dulce: { id: dulce.id },
+            Dulce: { id: Dulce.id },
           };
       
         jwt.sign(
@@ -70,7 +70,7 @@ const eliminarDulce = async (req, res) => {
         res.status(200).json({ aviso: "Dulce eliminado correctamente"});
 
         const payload = {
-            dulce: { id: dulce.id },
+            Dulce: { id: Dulce.id },
         };
         jwt.sign(
             payload,

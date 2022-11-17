@@ -5,9 +5,9 @@ const mongo = require('mongoose');
 (async () => {//Creating await function and running it
     try {
         //Connection String
-        const db = await mongo.connect("mongodb://localhost:27017/db_MiDulceOnline");
+        const db = await mongo.connect("mongodb+srv://Swiggui:Swiggui2200@cluster0.im632uv.mongodb.net/miDulceOnline?retryWrites=true&w=majority");
 
-        //Checking the connection
+        //Checking the connectiony
         console.log("Conexion establecida en: ", db.connection.name);
     } catch (error) {
         //Catching error
